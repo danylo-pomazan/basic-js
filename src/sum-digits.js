@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 /**
  * Given a number, replace this number with
@@ -12,11 +12,26 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-function getSumOfDigits(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function getSumOfDigits(n) {
+  // Convert the number to a string to extract its digits
+  let num = n.toString();
+
+  // Loop until we get a one-digit number
+  while (num.length > 1) {
+    // Split the string into an array of digits
+    const digits = num.split("");
+
+    // Calculate the sum of digits
+    const sum = digits.reduce((acc, digit) => acc + parseInt(digit), 0);
+
+    // Update the num variable with the sum
+    num = sum.toString();
+  }
+
+  // Return the final one-digit sum
+  return parseInt(num);
 }
 
 module.exports = {
-  getSumOfDigits
+  getSumOfDigits,
 };
